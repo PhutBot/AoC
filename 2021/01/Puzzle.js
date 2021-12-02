@@ -9,14 +9,10 @@ class Day1 extends aoc.Puzzle {
     part1(input) {
         // 7
         // 1482
-        let total = 0;
-        let lastDepth = input[0];
         return input.reduce((prev, curr, i, arr) => {
             prev += curr < arr[i+1] ? 1 : 0;
             return prev;
         }, 0);
-        
-        return total;
     }
 
     part2(input) {
