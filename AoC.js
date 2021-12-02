@@ -69,12 +69,12 @@ module.exports = {
 
         async getRawInput() {
             const rawInput = (await getInput(TOKEN, ROOT_DIR, this.year, this.day, this.isTest ? 'example.txt' : 'input.txt'));
-            return rawInput;
+            return rawInput.trimEnd();
         }
 
         async getLineInput() {
             const lines = (await this.getRawInput()).split(/\r?\n/);
-            return lines.slice(0, -1);
+            return lines;
         }
 
         part1(input) {}
