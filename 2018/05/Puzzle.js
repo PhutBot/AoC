@@ -33,22 +33,7 @@ class Day5 extends aoc.Puzzle {
         let min = Infinity;
         Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ').forEach((c) => {
             let clean_input = input.replace(new RegExp('[' + c + c.toLowerCase() + ']', 'g'), '');
-            let done = false;
-            while (!done) {
-                let count = 0;
-                for (let i = 1; i < clean_input.length; ++i) {
-                    if (clean_input[i-1] !== clean_input[i] && clean_input[i-1].toLowerCase() === clean_input[i].toLowerCase()) {
-                        let j = i !== clean_input.length ? i+1 : clean_input.length;
-                        clean_input = clean_input.slice(0, i-1) + clean_input.slice(j);
-                        count++;
-                    }
-                }
-                if (count === 0) {
-                    done = true;
-                }
-            }
-
-            min = Math.min(clean_input.length, min);
+            min = Math.min(this.part1(clean_input), min);
         });
 
         return min;
