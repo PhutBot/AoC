@@ -6,9 +6,7 @@ class Day5 extends aoc.Puzzle {
         this.getInput = this.getRawInput;
     }
 
-    part1(input) {
-        // 10
-        // 10978
+    doThing(input) {
         let done = false;
         while (!done) {
             let count = 0;
@@ -23,13 +21,20 @@ class Day5 extends aoc.Puzzle {
                 done = true;
             }
         }
+        return input;
+    }
 
-        return input.length;
+    part1(input) {
+        // 10
+        // 10978
+        return this.doThing(input).length;
     }
 
     part2(input) {
         // 4
         // 4840
+        input = this.doThing(input);
+
         let min = Infinity;
         Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ').forEach((c) => {
             let clean_input = input.replace(new RegExp('[' + c + c.toLowerCase() + ']', 'g'), '');
