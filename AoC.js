@@ -38,7 +38,7 @@ function readInput(filepath) {
 }
 
 async function getInput(token, rootDir, year, day, filename) {
-    const filepath = path.join(rootDir, `${year}`, `${day}`, filename);
+    const filepath = path.join(rootDir, `${year}`, `${day}`.padStart(2, '0'), filename);
     if (!fs.existsSync(filepath)) {
         await downloadInput(token, year, day, filepath);
     }
