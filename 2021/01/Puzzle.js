@@ -6,18 +6,14 @@ class Day1 extends aoc.Puzzle {
         this.prep = aoc.MapStringToInt;
     }
 
-    part1(input) {
-        // 7
-        // 1482
+    part1(input) { // example result: 7
         return input.reduce((prev, curr, i, arr) => {
             prev += curr < arr[i+1] ? 1 : 0;
             return prev;
         }, 0);
     }
 
-    part2(input) {
-        // 5
-        // 1518
+    part2(input) { // example result: 5
         return input.reduce((prev, curr, i, arr) => {
             prev += curr < arr[i+3] ? 1 : 0;
             return prev;

@@ -5,14 +5,10 @@ class Day3 extends aoc.Puzzle {
         super(2021, 3, true);
     }
 
-    part1(input) {
-        // 0
-        // 0
+    part1(input) { // example result: 0
     }
 
-    part2(input) {
-        // 0
-        // 0
+    part2(input) { // example result: 0
     }
 }
 

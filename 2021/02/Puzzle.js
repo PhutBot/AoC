@@ -13,9 +13,7 @@ class Day2 extends aoc.Puzzle {
         }, []);
     }
 
-    part1(input) {
-        // 150
-        // 2070300
+    part1(input) { // example result: 150
         const result = input.reduce((prev, curr) => {
             if (curr.direction === 'forward')
                 prev.distance += curr.distance;
@@ -27,9 +25,7 @@ class Day2 extends aoc.Puzzle {
         return result.distance * result.depth;
     }
 
-    part2(input) {
-        // 900
-        // 2078985210
+    part2(input) { // example result: 900
         const result = input.reduce((prev, curr) => {
             if (curr.direction === 'forward') {
                 prev.distance += curr.distance;
