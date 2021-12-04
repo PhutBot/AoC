@@ -46,12 +46,20 @@ async function getInput(token, rootDir, year, day, filename) {
 }
 
 module.exports = {
+    MapStringToBin: function(arr) {
+        return arr.map(x => Number.parseInt(x, 2));
+    },
+
     MapStringToInt: function(arr) {
         return arr.map(x => Number.parseInt(x));
     },
 
     MapStringToFloat: function(arr) {
         return arr.map(x => Number.parseFloat(x));
+    },
+    
+    dec2bin(dec, pad=1) {
+        return (dec >>> 0).toString(2).padStart(pad, '0');
     },
 
     Puzzle: class {
@@ -87,7 +95,7 @@ module.exports = {
                 try {
                     const output1 = this.part1(
                         await this.prep1(
-                            await this.prep(rawInput)));
+                            await this.prep([...rawInput])));
                     console.log(`part1: ${output1}`);
                 } catch (err) {
                     console.error(`error in part 1: ${err}`);
@@ -96,7 +104,7 @@ module.exports = {
                 try {
                     const output2 = this.part2(
                         await this.prep2(
-                            await this.prep(rawInput)));
+                            await this.prep([...rawInput])));
                     console.log(`part2: ${output2}`);
                 } catch (err) {
                     console.error(`error in part 2: ${err}`);
