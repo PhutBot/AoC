@@ -7,22 +7,6 @@ class Day3 extends aoc.Puzzle {
         this.bitCount = 1;
     }
 
-    countBits(n) {
-        let count = 0;
-        while (n > 0) {
-            n >>= 1;
-            count++;
-        }
-        return count;
-    }
-
-    getBitMask(n) {
-        let mask = 0;
-        for (let i = 0; i < n; ++i)
-            mask = (mask << 1) | 1;
-        return mask;
-    }
-
     findGamma(input) {
         let counter = new Array(this.bitCount);
         counter.fill(0);
@@ -49,12 +33,12 @@ class Day3 extends aoc.Puzzle {
     }
 
     calcEpsilon(gamma, len) {
-        return ~gamma & this.getBitMask(len);
+        return ~gamma & aoc.maskBits(len);
     }
 
     part1(input) { // example result: 198
         this.bitCount = input.reduce((prev, curr) => {
-            return Math.max(prev, this.countBits(curr))
+            return Math.max(prev, aoc.countBits(curr))
         }, 0);
 
         const gamma = this.findGamma(input);
