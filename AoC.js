@@ -140,7 +140,7 @@ module.exports = {
                     const output1 = this.part1(
                         await this.prep1(
                             await this.prep([...rawInput])));
-                    console.log(`part1: ${output1}`);
+                    console.log(`part1: ${JSON.stringify(output1)}`);
                 } catch (err) {
                     console.error(`error in part 1: ${err}`);
                 }
@@ -149,7 +149,7 @@ module.exports = {
                     const output2 = this.part2(
                         await this.prep2(
                             await this.prep([...rawInput])));
-                    console.log(`part2: ${output2}`);
+                    console.log(`part2: ${JSON.stringify(output2)}`);
                 } catch (err) {
                     console.error(`error in part 2: ${err}`);
                 }
