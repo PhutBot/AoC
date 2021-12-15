@@ -58,8 +58,42 @@ module.exports = {
         return arr.map(x => Number.parseFloat(x));
     },
     
+    bin2dec(str) {
+        return Number.parseInt(str, 2);
+    },
+    
     dec2bin(dec, pad=1) {
         return (dec >>> 0).toString(2).padStart(pad, '0');
+    },
+
+    maskBits(n) {
+        let mask = 0;
+        for (let i = 0; i < n; ++i)
+            mask = (mask << 1) | 1;
+        return mask;
+    },
+
+    countBits(n) {
+        let count = 0;
+        while (n > 0) {
+            n >>= 1;
+            count++;
+        }
+        return count;
+    },
+
+    setBit(i, n, m) {
+        n |= 0;
+        let result = n | (1 << i)
+        result = !m ? result : result & this.maskBits(m);
+        return result;
+    },
+
+    unsetBit(i, n, m) {
+        n |= 0;
+        let result = n ^ (1 << i)
+        result = !m ? result : result & this.maskBits(m);
+        return result;
     },
 
     Puzzle: class {
@@ -82,6 +116,11 @@ module.exports = {
 
         async getLineInput() {
             const lines = (await this.getRawInput()).split(/\r?\n/);
+            return lines;
+        }
+
+        async getSplitOnEmptyInput() {
+            const lines = (await this.getRawInput()).split(/\r?\n\r?\n/);
             return lines;
         }
 
