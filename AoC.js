@@ -119,6 +119,11 @@ module.exports = {
             return lines;
         }
 
+        async getListInput() {
+            const lines = (await this.getRawInput()).split(',');
+            return lines;
+        }
+
         async getSplitOnEmptyInput() {
             const lines = (await this.getRawInput()).split(/\r?\n\r?\n/);
             return lines;
