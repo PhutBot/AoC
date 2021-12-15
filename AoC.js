@@ -82,6 +82,16 @@ module.exports = {
         return count;
     },
 
+    populationCount(n) {
+        let count = 0;
+        while (n > 0) {
+            if (n & 1)
+                count++;
+            n >>= 1;
+        }
+        return count;
+    },
+
     setBit(i, n, m) {
         n |= 0;
         let result = n | (1 << i)
@@ -94,6 +104,37 @@ module.exports = {
         let result = n ^ (1 << i)
         result = !m ? result : result & this.maskBits(m);
         return result;
+    },
+
+    filter(arr, func) {
+        return Array.prototype.filter.call(arr, func);
+    },
+
+    reduce(arr, func, def) {
+        return Array.prototype.reduce.call(arr, func, def);
+    },
+
+    compare(a1, a2) {
+        return !Array.prototype.reduce.call(a1,
+            (p, c) => p || !a2.includes(c), false);
+    },
+
+    intersection(a1, a2) {
+        if (a1.length < a2.length) {
+            let tmp = a1;
+            a1 = a2;
+            a2 = tmp;
+        }
+        return this.filter(a1, x => a2.includes(x));
+    },
+
+    difference(a1, a2) {
+        if (a1.length < a2.length) {
+            let tmp = a1;
+            a1 = a2;
+            a2 = tmp;
+        }
+        return this.filter(a1, x => !a2.includes(x));
     },
 
     Puzzle: class {
@@ -143,6 +184,7 @@ module.exports = {
                     console.log(`part1: ${JSON.stringify(output1)}`);
                 } catch (err) {
                     console.error(`error in part 1: ${err}`);
+                    throw err;
                 }
                 
                 try {
@@ -152,9 +194,11 @@ module.exports = {
                     console.log(`part2: ${JSON.stringify(output2)}`);
                 } catch (err) {
                     console.error(`error in part 2: ${err}`);
+                    throw err;
                 }
             } catch (err) {
                 console.error(`error processing input: ${err}`);
+                throw err;
             }
         }
     }
