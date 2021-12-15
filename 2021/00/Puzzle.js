@@ -2,7 +2,7 @@ const aoc = require('../../AoC');
 
 class Day9999 extends aoc.Puzzle {
     constructor() {
-        super(2021, 9999, false);
+        super(2021, 9999, true);
     }
 
     part1(input) { // example result: 0
